@@ -1,5 +1,7 @@
 # Password Generator Starter Code
 
+![03-javascript-homework-demo](https://user-images.githubusercontent.com/54341829/109610238-181a8e80-7af2-11eb-93a5-399856062321.png)
+
 ## User Story
 AS AN employee with access to sensitive data
 I WANT to randomly generate a password that meets certain criteria
