@@ -20,3 +20,4 @@ https://luiscabrera77.github.io/password/
 ## Roadmap
 - To improve it´s usability, prompts should be replaced by buttons or a form with check boxes.
 - Add a copy button
+- Add a clear button
