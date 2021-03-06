@@ -1,6 +1,9 @@
-// Declare the elements of the HTML that we will be interacting with
+// Find the elements of the HTML that we will be interacting with
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
+
+// Declare password variable
+var password = ""
 
 // Declare utility variables - Maybe later, we could call these functions from buttons, or a form with checkboxes...
 // return a random lowercase
@@ -21,20 +24,18 @@ var randomNumber = function () {
   return num[Math.floor(Math.random() * num.length)];
 }
 
-// return a random special character --> Todo: how can I include a single quote?
+// return a random special character - note that "\" is used as an escape character to allow for single quote
 var randomSpecial = function () {
-  var sym = '~`!@#$%^&*()-_+={}[]|\;:"<>,./?';
+  var sym = '~`!@#$%^&*()-_+={}[]|\;:"<>,./?\'';
   return sym[Math.floor(Math.random() * sym.length)];
 }
 
-// Array to store the properties chosen below 
+// Array to store the properties (functions) to be chosen below 
 var passwordProperties = []
 
-//  function that will randomly select functions stored in the passwordProperties array (so that passwords' structure is also random)
+//  function that will randomly execute one of the functions stored in the passwordProperties array (so that passwords' structure is also random)
 var mixer = function () {
-  for (var i = 0; i < passwordProperties.length; i++) {
-    return passwordProperties[Math.floor(Math.random() * passwordProperties.length)]();
-  }
+  return passwordProperties[Math.floor(Math.random() * passwordProperties.length)]();
 }
 
 // This is where the user interaction happens
@@ -73,23 +74,13 @@ function writePassword() {
     return alert("You must select at least 1 of the 4 options, please try again");
   }
 
-  // Declare an empty password variable
-  var password = ""
-
-  // Declare a new variable that runs a function with a loop that executes the mixer as many times as characters were chosen
-  var generatePassword = function () {
-
-    for (var i = 0; i < charCount; i++) {
-      password += mixer(); // appends the result of the mixer to the password variable
-    }
-
-    //Write the password in the box we declared at the top
-    passwordText.value = password;
+  // Execute the mixer as many times as characters were chosen
+  for (var i = 0; i < charCount; i++) {
+    password += mixer(); // appends the result of the mixer to the password variable
   }
 
-  // run generatePassword
-  var password = generatePassword();
-
+  //Write the password in the box we declared at the top
+  passwordText.value = password;
 }
 
 // Ask button to run writePassword function when clicked.
